@@ -32,26 +32,39 @@ Is the first function that recieves all requests, validates the API KEY against 
 Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
 
 * **ptyTransactions** 
-Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
-    - * **ptyTransactionRepo**
+Is the function that validates and orchestrates all of the different flows regarding Transactions.
+    - **ptyTransactionRepo**
+        The Repo function is the one that interacts directly with the repository of the data and abstracts all other functions from interacting with the data directly.
+    - **ptyTransactionRetrieve**
         Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
-    - * **ptyTransactionRetrieve**
-        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
-    - * **ptyTransactionUpdate**
-        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
-    - * **ptyTransactionCreate**
-        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
+    - **ptyTransactionUpdate**
+        Is the function in charge of updating the status of a specific transaction.
+    - **ptyTransactionCreate**
+        Is the function in charge creating a new transaction and storing it in the Repo.
 
 * **ptyCards** 
-Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
+Is the function that validates and orchestrates all of the different flows regarding Cards
+    - **ptyCardsTokenize**
+        The Repo function is the one that interacts directly with the repository of the data and abstracts all other functions from interacting with the data directly.
+    - **ptyCardsAuthorize**
+        This function takes the card and charge information and authorizes the payment against the bank gateway
+    - **ptyCardsCharge**
+        This function charges and existing succesful authorization
+    - **ptyCardsSCA**
+        This function handles the URL generation and required validation for SCA 
 
-* **ptyTransactionLog** 
-Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
-
+* **ptyTransactionLogPubSub** 
+This GCP Pub/Sub instance will recieve messages from all the other functions in order to provide traceability and observability
+    - **ptyTransactionLogSub**
+        The TransactionLogSub function subscribes to the TransactionLog Queue and stores differents types of messages into the TransactionLogCache for then to be used by the API for observability and also included in some of the API responses
+    - **ptyTransactionLog**
+        The TransactionLog function retrieves all the available information regarding the transactionlog for an existing transaction
+    - **ptyTransactionLogCache**
+        The TransactionLogCache stores in memory all of the different TransctionLog messages.
 
 # Payment Flows
 
-# Documentation
+# API Documentation
 <p align="right">
   <a href="https://swagger.io/"><img src="https://www.scottbrady91.com/img/logos/swagger-banner.png" align="right" alt="Swagger" width="120"></a>
 </p>
@@ -62,5 +75,7 @@ We use [Swagger.io](https://swagger.io) to design the API and generate the docum
 * YAML Swagger **[file](https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)**
 
 # Building the API
+
+# Testing the API
 
 # Still TO-DO
