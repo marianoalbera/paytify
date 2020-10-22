@@ -23,8 +23,15 @@ Paytify is designed as a 100% "Serverless" application taking advanted [![Google
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
-### **ptyGateway** 
-Is the first function that recieves all requests, validates the API KEY and 
+* ### **ptyGateway** 
+Is the first function that recieves all requests, validates the API KEY against the Api Token Repo and then routes the request to the right domain currently between **Cards** or **Transactions**
+
+* ### **ptyApiTokenRepo** 
+Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
+
+* ### **ptyApiTokenRepo** 
+Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
+
 
 # Payment Flows
 
@@ -34,8 +41,10 @@ Is the first function that recieves all requests, validates the API KEY and
 </p>
 We use [Swagger.io](https://swagger.io) to design the API and generate the documentation, which you can find here:
 
-* Auto generated [Documentation](http://paytify.tk/docs/index.html)
+* Auto generated **[Documentation](http://paytify.tk/docs/index.html)**
 
-* YAML Swagger [file](https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)
+* YAML Swagger **[file](https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)**
+
+# Building the API
 
 # Still TO-DO
