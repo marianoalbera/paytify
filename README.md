@@ -1,2 +1,3 @@
-# Swagger JSON
-This is a swagger JSON built by the [swagger-codegen](https://github.com/swagger-api/swagger-codegen) project.
+![PayTiFy](http://paytify.tk/img/paytifyLogo.png)
+# Paytify Serverless API
+Paytify is a 100% serverless API 
