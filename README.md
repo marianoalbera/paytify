@@ -2,5 +2,29 @@
   <img src="http://paytify.tk/img/paytifyLogo.png" align="right" alt="PayTiFy" width="120">
 </p>
 
-# Paytify Serverless API
-Paytify is a 100% serverless API 
+# Paytify
+Paytify is a 100% serverless API designed to allow merchants to take payments and retrieve information about previous transactions.
+
+Paytify implements a 2-phase-commit model where all transactions need to be authorized first and charged later. That gives the merchant more flexibility to confirm the availability of the products before securing the charge.
+
+On version 1.0.0 of Paytify API the merchant can:
+* **Tokenize** the customer card information **Required for the other transactions
+* **Authorize** a tokenized card which will validate the card works and put a temporary block on the funds.
+* **Charge** a successful authorization to commit the charge into the account. This will complete the payment process
+* **Strongly Authenticate** a customer with SCA support when required to validate the transaction
+* **Retrieve** any existing transaction information with updated data of payment status
+
+# Architecture
+
+Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) services like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
+
+
+<p align="right">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="480">
+</p>
+
+# Payment Flows
+
+# Documentation
+
+# Still TO-DO
