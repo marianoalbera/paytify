@@ -23,13 +23,29 @@ Paytify is designed as a 100% "Serverless" application taking advanted [![Google
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
-* ### **ptyGateway** 
+## Architecture Components
+
+* **ptyGateway** 
 Is the first function that recieves all requests, validates the API KEY against the Api Token Repo and then routes the request to the right domain currently between **Cards** or **Transactions**
 
-* ### **ptyApiTokenRepo** 
+* **ptyApiTokenRepo** 
 Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
 
-* ### **ptyApiTokenRepo** 
+* **ptyTransactions** 
+Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
+    - * **ptyTransactionRepo**
+        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
+    - * **ptyTransactionRetrieve**
+        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
+    - * **ptyTransactionUpdate**
+        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
+    - * **ptyTransactionCreate**
+        Is the function in charge of retrieving the transaction data directly from the TransactionRepo function
+
+* **ptyCards** 
+Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
+
+* **ptyTransactionLog** 
 Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
 
 
