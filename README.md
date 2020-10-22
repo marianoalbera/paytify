@@ -23,8 +23,19 @@ Paytify is designed as a 100% "Serverless" application taking advanted [![Google
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
+## ptyGateway 
+Is the first function that recieves all requests, validates the API KEY and 
+
 # Payment Flows
 
 # Documentation
+<p align="right">
+  <a href="https://swagger.io/"><img src="https://www.scottbrady91.com/img/logos/swagger-banner.png" align="right" alt="Swagger" width="120"></a>
+</p>
+We use [Swagger.io](https://swagger.io) to design the API and generate the documentation, which you can find here:
+
+* Auto generated **[Documentation]**(http://paytify.tk/docs/index.html)
+
+* YAML Swagger **[file]**(https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)
 
 # Still TO-DO
