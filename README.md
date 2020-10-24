@@ -1,5 +1,5 @@
 <p align="right">
-  <img src="http://paytify.tk/img/paytifyLogo.png" align="right" alt="PayTiFy" width="120">
+  <img src="http://paytify.tk/img/paytifyLogo.png" align="right" alt="PayTiFy" width="200">
 </p>
 
 # Paytify
@@ -52,7 +52,6 @@ We use [Swagger.io](https://swagger.io) to design the API and generate the docum
 
 * YAML Swagger **[file](https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)**
 
-
 # Architecture
 
 Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) services like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
@@ -102,4 +101,8 @@ This GCP Pub/Sub instance will recieve messages from all the other functions in 
 
 # Building the API
 
+##TO-DO
+
 # Testing the API
+
+##TO-DO
