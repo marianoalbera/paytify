@@ -18,18 +18,16 @@ On version 1.0.0 of Paytify API the merchant can:
 
 This section outlines work that is currently being worked on and things we plan to work on next. The first version aims to deliver minimal functionality to tokenize, authorize, authenticate, charge and retrieve. In future versions we aim to complete more functional and non-functional features, like refunds, cancellations, continuos delivery tools, automated testing, Api key management, reporting tools, Client SDK, etc. 
 
-| Done  | Still To-Do |
+| Done  | In progress / To-Do |
 | ------------- | ------------- |
-| - [x] Github Readme   | - [] v1.0.0 API Implementation  |
-| - [x] Api documentation   | - [] CI/CD configuration  |
-| - [x] Payment Flows documentation  | - [] Unit and Integration tests  |
-| - [x] Architecture design  | - [] Secure data storage configuration  |
-| -  | - [] TransactionLog observability implementation  |
+|   - [x] Github Readme   | - [] v1.0.0 API Implementation  |
+|   - [x] Api documentation   | - [] CI/CD configuration  |
+|   - [x] Payment Flows documentation  | - [] Unit and Integration tests  |
+|   - [x] Architecture design  | - [] Secure data storage configuration  |
+|   -  | - [] TransactionLog observability implementation  |
 
 
 # Payment Flows
-
-
 
 <p align="center">
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Paytify-flows-simple.png?raw=true" align="center" alt="PayTiFy" width="800">
