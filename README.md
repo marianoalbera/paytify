@@ -21,17 +21,26 @@ This section outlines work that is currently being worked on and things we plan 
 | Done  | In progress / To-Do |
 | ------------- | ------------- |
 | - [x] Github Readme   | - [ ] v1.0.0 API Implementation  |
-| - [x] Api documentation   | - [ ] CI/CD configuration  |
+| - [x] Api design and documentation   | - [ ] CI/CD configuration  |
 | - [x] Payment Flows documentation  | - [ ] Unit and Integration tests  |
 | - [x] Architecture design  | - [ ] Secure data storage  |
 |    | - [ ] TransactionLog observability implementation  |
 
-
 # Payment Flows
 
+Paytify aims to simplify payment integrations by delivering a very simple api flow. All transactions require the customer card to be Tokenized for security and to implement a 2-phase-commit model where the payment needs to be first authorized and then charged. Throught the authorization process the client might be asked to implement an extra SCA "Strong Customer Authentication" flow in order to authenticate the customer on a 2nd factor before moving on into the final charge transaction.
+
+A simple diagram of the flow would be:
 <p align="center">
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Paytify-flows-simple.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
+
+You can also find more detailed flow documentation here:
+
+-   Tokenization --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Tokenize.png?raw=true" align="center" alt="PayTiFy" width="80">
+-   Authorization --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Authorization.png?raw=true" align="center" alt="PayTiFy" width="80"> 
+-   Strong Customer Authentication --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/SCA.png?raw=true" align="center" alt="PayTiFy" width="80">
+-   Charge --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Charge.png?raw=true" align="center" alt="PayTiFy" width="80">
 
 # API Documentation
 <p align="right">
