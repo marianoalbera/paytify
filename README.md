@@ -35,9 +35,9 @@ A simple diagram of the flow would be:
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Paytify-flows-simple.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
-A more detailed sequence diagram of the transactions:
+And a more detailed sequence diagram of the transactions:
 <p align="center">
-  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/PaytifySequenceDiagram.png?raw=true" align="center" alt="PayTiFy" width="600">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/PaytifySequenceDiagram.png?raw=true" align="center" alt="PayTiFy" width="600" style="border:1px black solid;">
 </p>
 
 You can also find more detailed flow documentation here:
