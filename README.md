@@ -50,7 +50,7 @@ We use [Swagger.io](https://swagger.io) to design the API and generate the docum
 
 * Auto generated **[Documentation](http://paytify.tk/docs/index.html)**
 
-* YAML Swagger **[file](https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)**
+* YAML Swagger **[file](https://github.com/marianoalbera/paytify/blob/main/swagger/swagger.yaml)**
 
 # Architecture
 
