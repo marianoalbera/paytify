@@ -20,11 +20,11 @@ This section outlines work that is currently being worked on and things we plan 
 
 | Done  | In progress / To-Do |
 | ------------- | ------------- |
-|   - [x] Github Readme   | - [] v1.0.0 API Implementation  |
-|   - [x] Api documentation   | - [] CI/CD configuration  |
-|   - [x] Payment Flows documentation  | - [] Unit and Integration tests  |
-|   - [x] Architecture design  | - [] Secure data storage configuration  |
-|   -  | - [] TransactionLog observability implementation  |
+| - [x] Github Readme   | - [ ] v1.0.0 API Implementation  |
+| - [x] Api documentation   | - [ ] CI/CD configuration  |
+| - [x] Payment Flows documentation  | - [ ] Unit and Integration tests  |
+| - [x] Architecture design  | - [ ] Secure data storage  |
+|    | - [ ] TransactionLog observability implementation  |
 
 
 # Payment Flows
