@@ -37,10 +37,10 @@ A simple diagram of the flow would be:
 
 You can also find more detailed flow documentation here:
 
--   Tokenization --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Tokenize.png?raw=true" align="center" alt="PayTiFy" width="80">
--   Authorization --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Authorization.png?raw=true" align="center" alt="PayTiFy" width="80"> 
--   Strong Customer Authentication --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/SCA.png?raw=true" align="center" alt="PayTiFy" width="80">
--   Charge --> <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Charge.png?raw=true" align="center" alt="PayTiFy" width="80">
+-   Tokenization :arrow_right: <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Tokenize.png?raw=true" align="center" alt="PayTiFy" width="100">
+-   Authorization :arrow_right: <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Authorization.png?raw=true" align="center" alt="PayTiFy" width="100"> 
+-   Strong Customer Authentication :arrow_right: <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/SCA.png?raw=true" align="center" alt="PayTiFy" width="100">
+-   Charge :arrow_right: <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Charge.png?raw=true" align="center" alt="PayTiFy" width="100">
 
 # API Documentation
 <p align="right">
