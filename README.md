@@ -14,18 +14,25 @@ On version 1.0.0 of Paytify API the merchant can:
 * **Strongly Authenticate** a customer with SCA support when required to validate the transaction
 * **Retrieve** any existing transaction information with updated data of payment status
 
+# Project Roadmap
+
+This section outlines work that is currently being worked on and things we plan to work on next. The first version aims to deliver minimal functionality to tokenize, authorize, authenticate, charge and retrieve. In future versions we aim to complete more functional and non-functional features, like refunds, cancellations, continuos delivery tools, automated testing, Api key management, reporting tools, Client SDK, etc. 
+
+| Done  | Still To-Do |
+| ------------- | ------------- |
+| - [x] Github Readme   | - [] v1.0.0 API Implementation  |
+| - [x] Api documentation   | - [] CI/CD configuration  |
+| - [x] Payment Flows documentation  | - [] Unit and Integration tests  |
+| - [x] Architecture design  | - [] Secure data storage configuration  |
+| -  | - [] TransactionLog observability implementation  |
+
+
 # Payment Flows
+
+
 
 <p align="center">
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/flows/Paytify-flows-simple.png?raw=true" align="center" alt="PayTiFy" width="800">
-</p>
-
-# Architecture
-
-Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) services like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
-
-<p align="center">
-  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
 # API Documentation
@@ -38,6 +45,14 @@ We use [Swagger.io](https://swagger.io) to design the API and generate the docum
 
 * YAML Swagger **[file](https://github.com/marianoalbera/paytify/blob/main/swagger.yaml)**
 
+
+# Architecture
+
+Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) services like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
+
+<p align="center">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="800">
+</p>
 
 ## Architecture Components
 
@@ -81,5 +96,3 @@ This GCP Pub/Sub instance will recieve messages from all the other functions in 
 # Building the API
 
 # Testing the API
-
-# Still TO-DO
