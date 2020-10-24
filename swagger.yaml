@@ -1,9 +1,12 @@
 ---
 swagger: "2.0"
 info:
-  description: This is a simple Payments API
+  description: |
+    Paytify is a 100% serverless API designed to allow merchants to take payments and retrieve information about previous transactions. It implements a 2-phase-commit model where all transactions need to be authorized first and charged later. That gives the merchant more flexibility to confirm the availability of the products before securing the charge.
+
+    **Paytify** aims to simplify payment integrations by delivering a very simple api flow. All transactions require the customer card to be Tokenized for security, then the payment request needs to be first authorized and then charged. Throught the authorization process the client might be asked to implement an extra SCA "Strong Customer Authentication" flow in order to authenticate the customer on a 2nd factor before moving on into the final charge transaction.
   version: 1.0.0
-  title: Simple Payments API
+  title: PaytiFy Payments API
   contact:
     email: malbera@gmail.com
   license:
@@ -12,22 +15,22 @@ info:
 host: virtserver.swaggerhub.com
 basePath: /malbesoft/Paytify/1.0.0
 tags:
-- name: admins
-  description: Secured Admin-only calls
-- name: developers
-  description: Operations available to regular developers
-- name: cards
-  description: Used for all card related transactions
+- name: Cards
+  description: Used for all card related endpoints
+- name: Transactions
+  description: Used for all transaction related endpoints
+- name: Customers
+  description: Used for all customer related endpoints
 schemes:
 - https
 paths:
   /cards/tokenize:
     post:
       tags:
-      - cards
-      summary: tokenizes credit card details
+      - Cards
+      summary: Tokenizes the card details
       description: |
-        By passing the card details you recieve a token to be used later in the transaction
+        By passing the card details you recieve a token to be used later in the other parts of the flow. You can store this token in your system without having to worry about sensitive information although the Token is valid only for a small period of time.
       operationId: tokenizeCard
       produces:
       - application/json
@@ -74,7 +77,7 @@ paths:
   /cards/authorize:
     post:
       tags:
-      - cards
+      - Cards
       summary: This transaction will pre authorize card transactions
       description: |
         By passing a valid card token you will be able to pre authorize a transaction, this pre authorization will validate fraud, card status and card funding, resulting in a temporary block of the funds in the card account
@@ -106,7 +109,7 @@ paths:
             on a succesful execution it will return the authentication  information to be used then on the charge object
           schema:
             $ref: '#/definitions/CardAuthorization'
-        "201":
+        "202":
           description: "Your request has been processed but requires  further customer authentication before it can be charged \n"
           schema:
             $ref: '#/definitions/CardAuthorization'
@@ -126,10 +129,64 @@ paths:
           description: You are not authorized to perform this operation
           schema:
             $ref: '#/definitions/Error'
-  /cards/sca:
+  /cards/charge:
     post:
       tags:
-      - cards
+      - Cards
+      summary: Creates a charge from an existing authorization
+      description: |
+        By passing the existing authorization details you commit the charge for the card into the systems
+      operationId: chargeCard
+      produces:
+      - application/json
+      parameters:
+      - name: API-Version
+        in: header
+        description: |
+          Header to indicate which version of the API this client is using. Only changes when backwards-incompatible modifications are introduced.
+        required: true
+        type: integer
+      - name: API-Token
+        in: header
+        description: |
+          Your API token to validate your merchant access
+        required: true
+        type: string
+      - in: body
+        name: details
+        description: Charge request details
+        required: true
+        schema:
+          $ref: '#/definitions/CardChargeRequest'
+      responses:
+        "200":
+          description: On a succesful charge it will return information about the transaction
+          schema:
+            $ref: '#/definitions/PaymentTransaction'
+        "201":
+          description: The charge has been declined for one or many reasons. Check transaction log for more information
+          schema:
+            $ref: '#/definitions/PaymentTransaction'
+        "400":
+          description: Bad Request, your request is missing one or many parameters in the correct format
+          schema:
+            $ref: '#/definitions/Error'
+        "401":
+          description: Your API token is either expired or invalid
+          schema:
+            $ref: '#/definitions/Error'
+        "402":
+          description: Your sca request was not succesful, please check the errors for more info
+          schema:
+            $ref: '#/definitions/Error'
+        "403":
+          description: Forbidden, You are not authorized to perform this operation
+          schema:
+            $ref: '#/definitions/Error'
+  /customers/sca:
+    post:
+      tags:
+      - Customers
       summary: This transaction will create a new SCA request for the transaction and return the URL to show the customer
       description: |
         By passing a valid transaction id and url for call back we will generate the url that needs  to be displayed to the customer in order to proceed with the SCA
@@ -177,68 +234,10 @@ paths:
           description: Forbidden, You are not authorized to perform this operation
           schema:
             $ref: '#/definitions/Error'
-  /cards/charge:
-    post:
-      tags:
-      - cards
-      summary: Creates a charge from an existing authorization
-      description: |
-        By passing the existing authorization details you commit the charge for the card into the systems
-      operationId: chargeCard
-      produces:
-      - application/json
-      parameters:
-      - name: API-Version
-        in: header
-        description: |
-          Header to indicate which version of the API this client is using. Only changes when backwards-incompatible modifications are introduced.
-        required: true
-        type: integer
-      - name: API-Token
-        in: header
-        description: |
-          Your API token to validate your merchant access
-        required: true
-        type: string
-      - in: body
-        name: details
-        description: Charge request details
-        required: true
-        schema:
-          $ref: '#/definitions/CardChargeRequest'
-      responses:
-        "200":
-          description: On a succesful charge it will return information about the transaction
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/PaymentTransaction'
-        "201":
-          description: The charge has been declined for one or many reasons. Check transaction log for more information
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/PaymentTransaction'
-        "400":
-          description: Bad Request, your request is missing one or many parameters in the correct format
-          schema:
-            $ref: '#/definitions/Error'
-        "401":
-          description: Your API token is either expired or invalid
-          schema:
-            $ref: '#/definitions/Error'
-        "402":
-          description: Your sca request was not succesful, please check the errors for more info
-          schema:
-            $ref: '#/definitions/Error'
-        "403":
-          description: Forbidden, You are not authorized to perform this operation
-          schema:
-            $ref: '#/definitions/Error'
   /transactions/{transactionId}/:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: Retrieves an existing transaction information
       description: |
         Used to retrieve all the information of an existing trasaction based on the transactionId
