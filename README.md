@@ -106,4 +106,3 @@ This GCP Pub/Sub instance will recieve messages from all the other functions in 
 # Testing the API
 
 ##TO-DO
-To-Do
