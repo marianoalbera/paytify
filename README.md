@@ -25,6 +25,8 @@ This section outlines what is currently being worked on and things we plan to wo
 | - [x] Payment Flows documentation  | - [ ] Unit and Integration tests  |
 | - [x] Architecture design  | - [ ] Secure data storage  |
 |    | - [ ] TransactionLog observability implementation  |
+|    | - [ ] Use VPC service controls to secure private functions  |
+|    | - [ ] Dockerize dev environment using express  |
 
 # Payment Flows
 
