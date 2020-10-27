@@ -3,9 +3,9 @@
 </p>
 
 # Paytify
-Paytify is a 100% serverless API designed to allow merchants to take payments and retrieve information about previous transactions.
+Paytify is a minimal serverless API designed to allow merchants to take payments and retrieve information about previous transactions.
 
-Paytify implements a 2-phase-commit model where all transactions need to be authorized first and charged later. That gives the merchant more flexibility to confirm the availability of the products before securing the charge.
+Paytify implements a 2-phase-commit model where all transactions need to be authorized first and charged later. That gives the merchant more flexibility to confirm the availability of the products before capturing the charge.
 
 On version 1.0.0 of Paytify API the merchant can:
 * **Tokenize** the customer card information **Required for the other transactions
@@ -16,17 +16,43 @@ On version 1.0.0 of Paytify API the merchant can:
 
 # Project Roadmap
 
-This section outlines what is currently being worked on and things we plan to work on next. The first version aims to deliver minimal functionality to tokenize, authorize, authenticate, charge and retrieve. In future versions we aim to complete more functional and non-functional features, like refunds, cancellations, continuos delivery tools, automated testing, Api key management, reporting tools, Client SDK, etc. 
+## V1.0.0 ( MVP Version )
 
-| Done  | In progress / To-Do |
-| ------------- | ------------- |
-| - [x] Github Readme   | - [ ] v1.0.0 API Implementation  |
-| - [x] Api design and documentation   | - [ ] CI/CD configuration  |
-| - [x] Payment Flows documentation  | - [ ] Unit and Integration tests  |
-| - [x] Architecture design  | - [ ] Secure data storage  |
-|    | - [ ] TransactionLog observability implementation  |
-|    | - [ ] Use VPC service controls to secure private functions  |
-|    | - [ ] Dockerize dev environment using express  |
+The first version of Paytify is designed to be minimal and support only basic transactions and support a small / medium business, as the volumes grow it will clearly require additional architecture components, more functionality and security, more scalable technologies, additional tools for observability,  monitoring and customer support and self service.
+
+| Completed  |
+| ------------- | 
+| - [x] Github Readme   | 
+| - [x] Api design and documentation   |
+| - [x] Payment Flows documentation  |
+| - [x] Architecture design  |
+| ------------- | 
+| Ongoing  |
+| ------------- |
+| - [ ] v1.0.0 API Implementation  | 
+| - [ ] CI/CD configuration  |
+| - [ ] Unit and Integration tests  |
+
+## Future Versions
+
+In order to improve scalability and support a larger number of customers and transactions the Paytify platform will have to evolve accordingly.
+
+| Paytify Future version Candidates |
+| ------------- |
+| - [ ] New functionalities such as Refunds, Cancellations, Recurring subscriptions  |
+| - [ ] New forms of payment like direct debit, Wallets, Bank Transfers, Invoices, etc   |
+| - [ ] Additional data request for better fraud prevention   |
+| - [ ] Fraud prevention as a standalone product |
+| - [ ] Customer data model and services & tools to manage it, including API tokens   |
+| - [ ] Customer tools for self configuration management and reporting   |
+| - [ ] Client SDK for common languages  |
+| - [ ] Move towards CF + Microservices for more complex   |
+| - [ ] HATEOAS Api model for return links in every transaction  |
+| - [ ] Service Discovery to simplify configuration requirements |
+| - [ ] Data lake and ETL processes for data science, analytics and tooling  |
+| - [ ] VPC service controls to secure private functions  |
+| - [ ] 3rd party tools for monitoring and observability  |
+
 
 # Payment Flows
 
@@ -66,6 +92,14 @@ We use [Swagger.io](https://swagger.io) to design the API and generate the docum
 
 Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) services like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
 
+We decided on **Google Cloud** as a platform to accelerate the delivery of the minimal version of Paytify as they have products for every need we might have. Cloud functions covers most of the computing needs, Cloud SQL can run any standard relational database, Pub/Sub is simple to use to collect events coming from the different functions and even more advanced products like Cloud Identity to provide a unified integrated access management platform.
+
+Google Cloud Functions can be written using **JavaScript**, Python 3, Go, or **Java** which provide multiple choices for the development team. For the minimal version of PayTify we are using mostly Javascript / **NodeJs** runtime and also Java for specific cases.
+
+As per the API design, many of the responses to the client contain a **TransactionLog** array that will provide more information about the execution of the request throught the different functions or services. The way we will implement the transaction log is by every function sending events to different **Cloud Pub/Sub** queues and the TransactionLog **Subscriber** CF collecting those events and grouping them in the TransactionLog **Cache**, which is then accesed by the TransactionLogRepo to deliver the data.
+
+The design contains a single entry point **Gateway** CF that acts as an orchestration between the different domains. Each domain also contains a single entry **Gateway** CF that combines the execution of different functions in order to achieve the desired flow. In cases where there is data persistency needed, each entity contains a **Repository** CF that abstracts the other CFs from the data storage.
+
 <p align="center">
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/architecture/Paytify%20Serverless%20-%20Current.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
@@ -77,6 +111,8 @@ Is the first function that recieves all requests, validates the API KEY against 
 
 * **ptyApiTokenRepo** 
 Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
+  - * **ptyApiTokenCache** 
+        The ptyApiTokenCache instance stores in memory all of the different Api Tokens and access levels for quick access.
 
 * **ptyTransactions** 
 Is the function that validates and orchestrates all of the different flows regarding Transactions.
