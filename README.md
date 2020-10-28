@@ -155,19 +155,19 @@ For the minimal version of Paytify we are using a very simple CD flow configured
 The standard flow for a nodeJs based function will execute first a npm build then run the tests with npm test and finally deploy directly into CF environment with the gcloud tooling.
 
 <p align="center">
-  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cicd.png?raw=true" align="center" alt="PayTiFy" width="400">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cicd.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
-## Google Cloud Build YAML configuration :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/cloudbuild.yaml)
+### Google Cloud Build YAML configuration :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/cloudbuild.yaml)
 
 The Google Cloud Build tool also includes a dashboard to monitor and configure new builds:
 
 <p align="center">
-  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild3.png?raw=true" align="center" alt="PayTiFy" width="400">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild3.PNG?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
 <p align="center">
-  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild2.png?raw=true" align="center" alt="PayTiFy" width="400">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild2.PNG?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
 # Testing the API
