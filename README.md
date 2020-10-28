@@ -73,7 +73,7 @@ And a more detailed sequence diagram of the transactions:
   </kbd>
 </p>
 
-You can also find more detailed flow documentation here:
+You can also find activity diagrams here:
 
 -   Tokenization :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/docs/flows/Tokenize.png?raw=true)
 -   Authorization :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/docs/flows/Authorization.png?raw=true)
@@ -152,22 +152,25 @@ This GCP Pub/Sub instance will recieve messages from all the other functions in 
 
 For the minimal version of Paytify we are using a very simple CD flow configured with Google Cloud Build.
 
-The standard flow for a nodeJs based function will execute first a npm build then run the tests with npm test and finally deploy directly into CF environment with the gcloud tooling.
+The basic CD flow gets triggered when a new push is  build the app, run the test and then deploy automatically into Google Cloud Functions. You can find **Google Cloud Build** YAML configuration :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/cloudbuild.yaml)
 
 <p align="center">
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cicd.png?raw=true" align="center" alt="PayTiFy" width="800">
 </p>
 
-### Google Cloud Build YAML configuration :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/cloudbuild.yaml)
 
-The Google Cloud Build tool also includes a dashboard to monitor and configure new builds:
+## The Google Cloud Build tool also includes a dashboard to monitor and configure new builds:
 
 <p align="center">
+  <kbd>
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild3.PNG?raw=true" align="center" alt="PayTiFy" width="800">
+  </kbd>
 </p>
 
 <p align="center">
+  <kbd>
   <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild2.PNG?raw=true" align="center" alt="PayTiFy" width="800">
+  </kbd>
 </p>
 
 # Testing the API
