@@ -13,7 +13,7 @@ let express = require('express');
 let app = express();
 
 app.get('/', (req,res) => {
-  res.status(200).send('Hello GET!');
+  res.status(200).send('Hello GET Yes!');
 });
 app.post('/', (req,res) => {
   res.status(200).send('Hello POST!');
@@ -25,4 +25,4 @@ app.delete('/', (req,res) => {
   res.status(200).send('Hello DELETE!');
 });
 
-exports.helloGET = app;
+exports.paytify = app;
