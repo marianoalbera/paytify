@@ -93,7 +93,7 @@ We use [Swagger.io](https://swagger.io) to design the API and generate the docum
 
 # Architecture
 
-Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) services like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
+Paytify is designed as a 100% "Serverless" application taking advanted [![Google Cloud](https://img.shields.io/badge/gcp-Google%20Cloud%20Platform-blue)](http://cloud.google.com) products like **Cloud Functions**, **Pub/Sub**, **GCP Key Management Service** and **Cloud Load Balancer**
 
 We decided on **Google Cloud** as a platform to accelerate the delivery of the minimal version of Paytify as they have products for every need we might have. Cloud functions covers most of the computing needs, Cloud SQL can run any standard relational database, Pub/Sub is simple to use to collect events coming from the different functions and even more advanced products like Cloud Identity to provide a unified integrated access management platform.
 
@@ -114,7 +114,7 @@ Is the first function that recieves all requests, validates the API KEY against 
 
 * **ptyApiTokenRepo** 
 Is the function in charge of interacting with GCP Key Management Services to retrieve and validate API tokens recieved
-  - * **ptyApiTokenCache** 
+    - **ptyApiTokenCache** 
         The ptyApiTokenCache instance stores in memory all of the different Api Tokens and access levels for quick access.
 
 * **ptyTransactions** 
@@ -150,7 +150,25 @@ This GCP Pub/Sub instance will recieve messages from all the other functions in 
 
 # Building the API
 
-##TO-DO
+For the minimal version of Paytify we are using a very simple CD flow configured with Google Cloud Build.
+
+The standard flow for a nodeJs based function will execute first a npm build then run the tests with npm test and finally deploy directly into CF environment with the gcloud tooling.
+
+<p align="center">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cicd.png?raw=true" align="center" alt="PayTiFy" width="400">
+</p>
+
+## Google Cloud Build YAML configuration :arrow_right: [**Here**](https://github.com/marianoalbera/paytify/blob/main/cloudbuild.yaml)
+
+The Google Cloud Build tool also includes a dashboard to monitor and configure new builds:
+
+<p align="center">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild3.png?raw=true" align="center" alt="PayTiFy" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/marianoalbera/paytify/blob/main/docs/img/cloudbuild2.png?raw=true" align="center" alt="PayTiFy" width="400">
+</p>
 
 # Testing the API
 
