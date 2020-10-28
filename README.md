@@ -26,9 +26,9 @@ The first version of Paytify is designed to be minimal and support only basic tr
 | - [x] Api design and documentation   |
 | - [x] Payment Flows documentation  |
 | - [x] Architecture design  |
-| ------------- | 
+
 | Ongoing  |
-| ------------- |
+| ------------- | 
 | - [ ] v1.0.0 API Implementation  | 
 | - [ ] CI/CD configuration  |
 | - [ ] Unit and Integration tests  |
@@ -46,12 +46,15 @@ In order to improve scalability and support a larger number of customers and tra
 | - [ ] Customer data model and services & tools to manage it, including API tokens   |
 | - [ ] Customer tools for self configuration management and reporting   |
 | - [ ] Client SDK for common languages  |
-| - [ ] Move towards CF + Microservices for more complex   |
+| - [ ] Move towards CF + Microservices for more complex implementation  |
+| - [ ] More robust circuit breaker implementation for key dependencies  |
 | - [ ] HATEOAS Api model for return links in every transaction  |
 | - [ ] Service Discovery to simplify configuration requirements |
+| - [ ] Multi Region cloud hosting strategy for increased availability and reliability  |
 | - [ ] Data lake and ETL processes for data science, analytics and tooling  |
 | - [ ] VPC service controls to secure private functions  |
 | - [ ] 3rd party tools for monitoring and observability  |
+
 
 
 # Payment Flows
