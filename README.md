@@ -26,6 +26,7 @@ The first version of Paytify is designed to be minimal and support only basic tr
 | - [x] Api design and documentation   |
 | - [x] Payment Flows documentation  |
 | - [x] Architecture design  |
+| - [x] ptyGateway Mockup for Tokenization endpoint |
 
 | Ongoing  |
 | ------------- | 
