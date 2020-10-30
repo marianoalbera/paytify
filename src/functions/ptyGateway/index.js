@@ -12,10 +12,10 @@
 let express = require('express');
 let app = express();
 
-var dateFormat = require('dateformat');
-var now = new Date();
-var exp = new Date();
-exp.setHours(exp.getHours()+1);
+//var dateFormat = require('dateformat');
+//var now = new Date();
+//var exp = new Date();
+//exp.setHours(exp.getHours()+1);
 
 
 //I need to validate token in header
@@ -23,9 +23,7 @@ exp.setHours(exp.getHours()+1);
 //and I route through the different functions
 app.post('/cards/tokenize', (req,res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send('{id:"zDzgTJThFCaUojhRvFn9MGF22DOdeSwP",created:"'
-    +dateFormat(now, "yyyymmdd hh:MM:ss")+'", expiration:"'
-    +dateFormat(exp, "yyyymmdd hh:MM:ss")+'"}');
+  res.status(200).send('{id:"zDzgTJThFCaUojhRvFn9MGF22DOdeSwP",created:"20201030 11:30:00", expiration:"20201030 12:30:00"}');
 });
 
 app.get('/', (req,res) => {
