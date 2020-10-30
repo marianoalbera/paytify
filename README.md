@@ -26,12 +26,12 @@ The first version of Paytify is designed to be minimal and support only basic tr
 | - [x] Api design and documentation   |
 | - [x] Payment Flows documentation  |
 | - [x] Architecture design  |
+| - [x] Google Cloud Build CI/CD configuration  |
 | - [x] ptyGateway Mockup for Tokenization endpoint |
 
 | Ongoing  |
 | ------------- | 
 | - [ ] v1.0.0 API Implementation  | 
-| - [ ] CI/CD configuration  |
 | - [ ] Unit and Integration tests  |
 
 ## Future Versions
