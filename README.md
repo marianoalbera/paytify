@@ -175,4 +175,10 @@ The basic CD flow gets triggered when a new push is  build the app, run the test
 
 # Testing the API
 
-##TO-DO
+A mocked version of the Tokenize enpoint is currently implemented for testing.
+
+```bash
+curl -i -X POST -H "Content-Type:application/json" \
+-d '{"cardNumber":"4242424242424242","expireMonth":"12","expireYear":"2020","cv2":"123","cardHolder":{"name":"Mr Steve Wozniak", "addressLine":"1 infinite loop,cupertino","postCode":"95014","countryCode":"US"}}' \
+https://us-central1-paytify.cloudfunctions.net/paytify/cards/tokenize/
+```
